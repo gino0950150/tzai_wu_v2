@@ -1,37 +1,21 @@
-<template>
-  <v-app>
-    <v-card
-      app
-      color='white'
-      tile
-      height="9vh"
-      class="d-flex align-center"
-    >
-      <v-col  cols='4'>
-        <span class="title text-h4" color='primary'>載物書院<span class="text-h6" color='primary'> Tzai Wu</span></span>
-      </v-col>
-      <v-col 
-        cols="4"
-        class="d-flex justify-center">
-        <v-btn to="/" text>
-          <span class="text-h6">關於載物</span>
-        </v-btn>
-        <v-btn to="/about" text>
-          <span class="text-h6">重要公告</span>
-        </v-btn>
-        <v-btn to="/search" text>
-          <span class="text-h6">活動消息</span>
-        </v-btn>
-        <v-btn to="/book" text>
-          <span class="text-h6">空間預約</span>
-        </v-btn>   
-      </v-col>
-    </v-card>
-
-    <v-content>
-      <router-view />
-    </v-content>
-  </v-app>
+<template lang='pug'>
+  v-app
+    div.ban
+      div.t 載物書院
+      div.st Tzai Wu
+      div.gp
+        v-btn(to='/' text='')
+          div.s 關於載物
+        v-btn(to='/about' text='')
+          div.s 重要公告
+        v-btn(to='/search' text='')
+          div.s 活動消息
+        v-btn(to='/book' text='')
+          div.s 空間預約
+        v-btn(to='/book' text='')
+          div.s 報名載物
+    v-content
+      router-view
 </template>
 
 <script>
@@ -49,25 +33,65 @@ export default {
 
 <style lang="scss" scoped>
 @import'assets/scss/main.scss';
-.title{
+.t{
+  position: absolute;
+  width: 229px;
+  height: 53px;
+  left: 68px;
+  top: 16px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 49px;
+  line-height: 57px;
+  letter-spacing: 0.1em;
+  color: #000000;
+}
+.st{
+  position: absolute;
+  width: 126px;
+  height: 31px;
+  left: 297px;
+  top: 38px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.125em;
+  color: #000000;
+}
+.ban{
+  height:91px;
+  width:100vw;
+  position: fixed;
+  z-index: 1000;
+  background: white;
+}
+.gp{
+  position: absolute;
+  width: 860px;
+  height: 31px;
+  left: 482px;
+  top: 38px;
+}
+.v-btn{
   position: relative;
-  left:5vw;
+  width: 126px;
+  height: 31px;
+  margin-left: 23px;
+  margin-right: 23px;
 }
-.v-btn:hover { 
-  background-color: rgba(201, 201, 201, 0.294);
+.s{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.28em;
+  color: #000000;
 }
-.v-btn--active {
-  color:$secondColor !important;
-  background: rgb(255, 255, 255) !important;
-}
-.v-btn::before{
-  background: rgb(255, 255, 255) !important;
-}
-.v-btn::after{
-  background: rgb(255, 255, 255) !important;
-}
-.v-ripple__container {
-    display:none !important;
-}
+
 
 </style>
