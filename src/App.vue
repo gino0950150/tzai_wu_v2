@@ -8,11 +8,11 @@
           div.s 關於載物
         v-btn(to='/about' text='')
           div.s 重要公告
-        v-btn(to='/search' text='')
+        v-btn(to='/activity' text='')
           div.s 活動消息
         v-btn(to='/book' text='')
           div.s 空間預約
-        v-btn(to='/book' text='')
+        v-btn(to='/aaply' text='')
           div.s 報名載物
     v-content
       router-view

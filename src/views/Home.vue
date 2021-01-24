@@ -1,16 +1,15 @@
 <template lang='pug'>
 #Home
-  .frame
-  .f3
-    .ifm
-    .t1 【移工人生體驗桌遊，最後一場！】
-    .t2  我們想要別人怎麼對待台灣人 要先從友善的對待移工開始。
-    .container 
-      .m1
-      .m1
-      .m1
-      .m1
-      .m1
+  img.frame(v-bind:src='mainImage')
+  v-hover
+    #f3(v-on:click="link")
+      .ifm
+      .t1 【移工人生體驗桌遊，最後一場！】
+      .t2  我們想要別人怎麼對待台灣人 要先從友善的對待移工開始。
+  vue-horizontal-list.acontainer(:items='items' :options='options')
+    template(v-slot:default='{ item }')
+      .image-container(v-on:mouseover="mainImage = item.image")
+        img(:src='item.image')
   .div.intro 書院介紹
   .div.line 
   flipbook.flipbook(v-bind:pages="pages", singlePage = true, canZoomIn = 0, canZoomOut = 0)
@@ -20,22 +19,53 @@
 <script>
 // @ is an alias to /src
 import Flipbook from 'flipbook-vue';
+import VueHorizontalList from "vue-horizontal-list";
 export default {
   name: 'Home',
   data() {
-        return {
-          pages: [null,require("../assets/pics/ppt/1.png"),
-                require("../assets/pics/ppt/2.png"),
-                require("../assets/pics/ppt/3.png"),
-                require("../assets/pics/ppt/4.png"),
-                require("../assets/pics/ppt/5.png"),
-                require("../assets/pics/ppt/6.png")],
-          da:require('@/assets/pics/4.png'),
-        }
+    return {
+      pages: [null,require("../assets/pics/ppt/1.png"),
+            require("../assets/pics/ppt/2.png"),
+            require("../assets/pics/ppt/3.png"),
+            require("../assets/pics/ppt/4.png"),
+            require("../assets/pics/ppt/5.png"),
+            require("../assets/pics/ppt/6.png")],
+      da:require('@/assets/pics/4.png'),
+      mainImage: require('@/assets/pics/3.png'), 
+      items: [
+        {
+          image: require('@/assets/pics/4.png'),
+        },
+        {
+          image: require('@/assets/pics/7.jpg'),
+        },
+        {
+          image: require('@/assets/pics/8.jpg'),
+        },
+        {
+          image: require('@/assets/pics/2.png'),
+        },
+        {
+          image: require('@/assets/pics/6.jpg'),
+        },
+        {
+          image: require('@/assets/pics/3.png'),
+        },
+      ],
+      options: {
+        responsive: [
+          { end: 576, size: 3 },
+          { start: 576, end: 768, size: 3 },
+          { size: 6 },
+        ],
+      },
+    }
   },
-  components: { Flipbook },
-  beforeCreate(){
-    console.log('files')
+  components: { Flipbook, VueHorizontalList},
+  methods: {
+    link: function () {
+      window.open("https://www.facebook.com/MigrantWorkersFriendlyUnion/posts/205754137881470")
+    }
   }
 }
 </script>
@@ -51,28 +81,8 @@ export default {
   background-color: #eee;
   background-position: center;
   background-size: cover;
-  animation: image 20s infinite alternate;
 }
-@keyframes image {
-  0% {
-    background-image: url('../assets/pics/2.png');
-  }
-  20% {
-    background-image: url('../assets/pics/3.png');
-  }
-  40% {
-    background-image: url('../assets/pics/3.png');
-  }
-  60% {
-    background-image: url('../assets/pics/4.png');
-  }
-  80% {
-    background-image: url('../assets/pics/7.jpg');
-  }
-  100% {
-    background-image: url('../assets/pics/8.jpg');
-  }
-}
+
 #Home{
   position: absolute;
   width: 1370px;
@@ -84,10 +94,10 @@ export default {
   position: absolute;
   width: 571.6px;
   height: 444.64px;
-  left: 0px;
-  top : 270px; 
+  left:0px;
+  top :580px; 
 }
-.f3{
+#f3{
   position: absolute;
   width: 573px;
   height: 307px;
@@ -95,6 +105,9 @@ export default {
   background: #FFFFFF;
   border: 4px solid #E1E1E1;
   box-sizing: border-box;
+}
+#f3:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.514); 
 }
 .booktitle{
   position: absolute;
@@ -110,36 +123,16 @@ export default {
   position: absolute;
   writing-mode: vertical-lr;
   font-size: 25px;
-  left:575px;
+  left:585px;
   top:950px;
   color: rgb(75, 75, 75);
   animation:neon-shine 2s linear infinite; 
 }
-.container{
+.acontainer{
   position: absolute;
-  height: 133px;
-  width: 573px;
-  left: -4px;
-  top: 320px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-.container::-webkit-scrollbar {
-  height: 8px;
-}
-.container::-webkit-scrollbar-track {
-  background: #FFFFFF;
-  border: 1px solid #D8D8D8;
-}
-.container::-webkit-scrollbar-thumb {
-  background: #d3d3d3;
-}
-.container::-webkit-scrollbar-thumb:hover {
-  background: rgb(207, 207, 207);
-}
-.container::-webkit-scrollbar-thumb:active {
-  background: rgb(201, 201, 201);
+  width: 573px !important;
+  left: 799px;
+  top: 300px;
 }
 .ifm{
   position: relative;
@@ -208,6 +201,32 @@ export default {
   top:590px;
   left:700px;
   border:4px solid #bdbdbd
+}
+.hl{
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  top:1200px;
+}
+.image-container {
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top:75%;
+}
+.image-container:hover{
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.514); 
+}
+img {
+  object-fit: cover;
+  width:180.33px;
+  height: 135.24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 @keyframes neon-shine{
   0%{opacity:1;}

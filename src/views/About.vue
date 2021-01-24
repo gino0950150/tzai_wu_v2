@@ -31,12 +31,6 @@
       name: 'About',
       data() {
         return {
-          pages: [null,require("../assets/pics/ppt/1.png"),
-                require("../assets/pics/ppt/2.png"),
-                require("../assets/pics/ppt/3.png"),
-                require("../assets/pics/ppt/4.png"),
-                require("../assets/pics/ppt/5.png"),
-                require("../assets/pics/ppt/6.png")],
           big:require('@/assets/pics/news/p1.png'),
           title:'【歡迎報名】影像工作坊 11/29(日)',
           subtitle:'講者：潘信安（熱青年）時間 : 2020/11/29(日) 9:00-17:00',
@@ -54,7 +48,6 @@
 }
 .fbox{
   position: absolute;
-  left: 5vw;
   top:2vh;
 }
 .a{
@@ -68,10 +61,17 @@
 .newsbox{
   position: absolute;
   top:80vh;
-  left:5vw;
   width:90vw;
 }
 .rowbox{
   margin-bottom: 50px;
 }
+#About{
+  position: absolute;
+  width: 1370px;
+  height: 1021px;
+  left: 68px;
+  top: 91px;
+}
+
 </style>
